@@ -6,6 +6,7 @@ using namespace std;
 int s[10];
 void printS(void) { for (int i = 1; i <= 8; i++) cout << s[i] << " "; cout << endl; }
 void randomize();
+void findErr();
 class Grouping {
 public:
 	static int Start() {
@@ -173,6 +174,19 @@ private:
 		case 3: {
 			int a, b;
 			A();
+			for (int i = 1; i <= 8; i++) { p[i] = 0; }
+			cnt = 0;
+			for (i = 1; i <= 4; i++) {
+				if (s[i] >= 1 && s[i] <= 4) {
+					p[i] = 1;
+					cnt++;
+				}
+			}
+			for (int i = 5; i <= 8; i++) {
+				if (s[i] >= 5 && s[i] <= 8) {
+					p[i] = 1;
+				}
+			}
 			for (int i = 1; i <= 4; i++) {
 				if (p[i] == 1) {
 					a = i;
@@ -203,19 +217,21 @@ class Ghana : Grouping {
 ////////////////////////////
 int main()
 {
-	randomize();
+	//randomize();
+	/*
 	int i;
-	//for (i = 1; i <= 8; i++){
-	//	cin >> s[i];
-	//}
+	for (i = 1; i <= 8; i++){
+		cin >> s[i];
+	}
+	*/
+	/*
 	for (i = 1; i <= 8; i++) {
 		cout << s[i] << " ";
 	}
 	cout << endl;
-	Grouping::Start();
-	for (i = 1; i <= 8; i++) {
-		cout << s[i] << " ";
-	}
+	*/
+	//Grouping::Start();
+	findErr();
 	return 0;
 }
 /////////////////
@@ -236,6 +252,35 @@ void randomize()
 			s[i] = a;
 		}
 		else goto re;
+	}
+	return;
+}
+/////////////
+void findErr()
+{
+	int i;
+	int k;
+	int cnt = 0;
+	int original_data[10];
+	randomize();
+	for (k = 1; k <= 8; k++) original_data[k] = s[k];
+	Grouping::Start();
+	while (1) {
+		for (k = 1; k <= 4; k++) {
+			cnt += s[k];
+		}
+		if (cnt != 26 && cnt != 10) goto ERR;
+		randomize();
+		for (k = 1; k <= 8; k++) original_data[k] = s[k];
+		Grouping::Start();
+		cnt = 0;
+	}
+
+ERR:
+	cout << endl << endl;
+
+	for (i = 1; i <= 8; i++) {
+		cout << original_data[i] << " ";
 	}
 	return;
 }
