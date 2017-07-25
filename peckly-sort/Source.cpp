@@ -229,7 +229,7 @@ private:
 			if (s[1] > s[2]) C();
 			B();
 			if (s[1] > s[2]) C();
-			if (s[1] < s[3]) B();
+			if (s[1] > s[3]) B();
 		}
 		else {
 			if (abs(w - x) == 2) {
@@ -251,7 +251,7 @@ private:
 				case 4: {
 					C();
 					B();
-					if (y != 2)C();
+					if (y != 1)C();
 					break;
 				}
 				}
@@ -302,6 +302,7 @@ int main()
 	//randomize();
 	
 	int i;
+	/*
 	for (i = 1; i <= 8; i++) {
 		cin >> s[i];
 	}
@@ -310,12 +311,12 @@ int main()
 		cout << s[i] << " ";
 	}
 	cout << endl;
-	*/
+	
 
 	Grouping::Start();
 	Ghana::Start();
-	
-	//findErr();
+	*/
+	findErr();
 	return 0;
 }
 /////////////////
