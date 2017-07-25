@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <chrono>
+#include <cmath>
 using namespace std;
 
 int s[10];
@@ -13,6 +14,7 @@ public:
 		return unit();
 	}
 	////////////////////////////////////////
+protected:
 	static void A() {
 		int a[4] = { s[1], s[2], s[3], s[4] };
 		int b[4] = { s[5], s[6], s[7], s[8] };
@@ -210,28 +212,107 @@ private:
 	////////////////////////////////////////
 };
 class Ghana : Grouping {
-
+public:
+	static void Start() {
+		chocolate(0);
+		return;
+	}
+private:
+	static void chocolate(int asdf) {
+		int w = s[1] % 4, x = s[2] % 4, y = s[3] % 4, z = s[4] % 4;
+		if (w == 1 && x == 2 || w == 3 && x == 4 || w == 2 && x == 1 || w == 4 && x == 3) {
+			if (s[1] > s[2]) C();
+			B();
+			if (s[1] > s[2]) C();
+			if (s[1] < s[3]) B();
+		}
+		else {
+			if (abs(w - x) == 2) {
+				switch (w) {
+				case 1: {
+					if (y != 2) B();
+					break;
+				}
+				case 2: {
+					B();
+					if (y != 1) C();
+					break;
+				}
+				case 3: {
+					C();
+					B();
+					if (y != 1) C();
+					break;
+				}
+				case 4: {
+					C();
+					if (y != 2) B();
+					break;
+				}
+				}
+				C(); D(); B(); D(); B(); D(); C();
+			}
+			else {
+				switch (w) {
+				case 1: {
+					if (y != 2) B();
+					break;
+				}
+				case 2: {
+					B();
+					if (y != 1) C();
+					break;
+				}
+				case 3: {
+					C();
+					if (y != 2) B();
+					break;
+				}
+				case 4: {
+					C();
+					B();
+					if (y != 1) C();
+					break;
+				}
+				}
+				C(); D(); B(); D(); C(); B(); D(); C();
+			}
+		}
+		A();
+		if (asdf != 1) chocolate(1);
+		return;
+		int i;
+		for (i = 1; i <= 4; i++) {
+			if (s[i] != i) break;
+		}
+		if (i != 5) A();
+		return;
+	}
 };
 ////////////////////////////
 //End of class declaration//
 ////////////////////////////
+
 int main()
 {
 	//randomize();
-	/*
+	
 	int i;
 	for (i = 1; i <= 8; i++){
 		cin >> s[i];
 	}
-	*/
+	
 	/*
 	for (i = 1; i <= 8; i++) {
 		cout << s[i] << " ";
 	}
 	cout << endl;
 	*/
-	//Grouping::Start();
-	findErr();
+	
+	Grouping::Start();
+	Ghana::Start();
+	
+	//findErr();
 	return 0;
 }
 /////////////////
@@ -265,14 +346,15 @@ void findErr()
 	randomize();
 	for (k = 1; k <= 8; k++) original_data[k] = s[k];
 	Grouping::Start();
+	Ghana::Start();
 	while (1) {
-		for (k = 1; k <= 4; k++) {
-			cnt += s[k];
+		for (k = 1; k <= 8; k++) {
+			if (s[k] != k) goto ERR;
 		}
-		if (cnt != 26 && cnt != 10) goto ERR;
 		randomize();
 		for (k = 1; k <= 8; k++) original_data[k] = s[k];
 		Grouping::Start();
+		Ghana::Start();
 		cnt = 0;
 	}
 
