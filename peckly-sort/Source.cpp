@@ -220,6 +220,11 @@ public:
 private:
 	static void chocolate(int asdf) {
 		int w = s[1] % 4, x = s[2] % 4, y = s[3] % 4, z = s[4] % 4;
+		if (!w) w = 4;
+		else if (!x) x = 4;
+		else if (!y) y = 4;
+		else if (!z) z = 4;
+		/**/cout << w << " " << x << " " << y << " " << z << endl;
 		if (w == 1 && x == 2 || w == 3 && x == 4 || w == 2 && x == 1 || w == 4 && x == 3) {
 			if (s[1] > s[2]) C();
 			B();
@@ -230,7 +235,7 @@ private:
 			if (abs(w - x) == 2) {
 				switch (w) {
 				case 1: {
-					if (y != 2) B();
+					if (y != 2) { B(); C(); B(); }
 					break;
 				}
 				case 2: {
@@ -240,13 +245,13 @@ private:
 				}
 				case 3: {
 					C();
-					B();
-					if (y != 1) C();
+					if (y != 2) { B(); C(); B(); }
 					break;
 				}
 				case 4: {
 					C();
-					if (y != 2) B();
+					B();
+					if (y != 2)C();
 					break;
 				}
 				}
@@ -255,7 +260,7 @@ private:
 			else {
 				switch (w) {
 				case 1: {
-					if (y != 2) B();
+					if (y != 2) { B(); C(); B(); }
 					break;
 				}
 				case 2: {
@@ -265,13 +270,13 @@ private:
 				}
 				case 3: {
 					C();
-					if (y != 2) B();
+					B();
+					if (y != 1) C();
 					break;
 				}
 				case 4: {
 					C();
-					B();
-					if (y != 1) C();
+					if (y != 2) { B(); C(); B(); }
 					break;
 				}
 				}
@@ -280,7 +285,6 @@ private:
 		}
 		A();
 		if (asdf != 1) chocolate(1);
-		return;
 		int i;
 		for (i = 1; i <= 4; i++) {
 			if (s[i] != i) break;
@@ -298,17 +302,16 @@ int main()
 	//randomize();
 	
 	int i;
-	for (i = 1; i <= 8; i++){
+	for (i = 1; i <= 8; i++) {
 		cin >> s[i];
 	}
-	
 	/*
 	for (i = 1; i <= 8; i++) {
 		cout << s[i] << " ";
 	}
 	cout << endl;
 	*/
-	
+
 	Grouping::Start();
 	Ghana::Start();
 	
