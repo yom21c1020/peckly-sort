@@ -209,8 +209,8 @@ private:
 		cout << cnt << endl;
 		return cnt;
 	}
-	////////////////////////////////////////
 };
+////////////////////////////////////////
 class Ghana : Grouping {
 public:
 	static void Start() {
@@ -299,24 +299,24 @@ private:
 
 int main()
 {
-	//randomize();
+	//randomize(); //Make random data
 	
 	int i;
 	/*
-	for (i = 1; i <= 8; i++) {
+	for (i = 1; i <= 8; i++) { //Input from user
 		cin >> s[i];
 	}
 	/*
-	for (i = 1; i <= 8; i++) {
+	for (i = 1; i <= 8; i++) { //Output starting 
 		cout << s[i] << " ";
 	}
 	cout << endl;
 	
 
-	Grouping::Start();
-	Ghana::Start();
+	Grouping::Start(); //Starting grouping
+	Ghana::Start(); //Starting ghana algorithm
 	*/
-	findErr();
+	findErr(); //Call error find function
 	return 0;
 }
 /////////////////
