@@ -300,18 +300,18 @@ private:
 int main()
 {
 	//randomize(); //Make random data
-	
+
 	int i;
 	/*
 	for (i = 1; i <= 8; i++) { //Input from user
-		cin >> s[i];
+	cin >> s[i];
 	}
 	/*
-	for (i = 1; i <= 8; i++) { //Output starting 
-		cout << s[i] << " ";
+	for (i = 1; i <= 8; i++) { //Output starting
+	cout << s[i] << " ";
 	}
 	cout << endl;
-	
+
 
 	Grouping::Start(); //Starting grouping
 	Ghana::Start(); //Starting ghana algorithm
